@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+	<title>Income Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'mystyle.min.css') }}" type="text/css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css">
+    <style>
+        html{
+            overflow: hidden;
+        }
+
+        body{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #login-form-container{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>	
+<body style="background-color:rgb(205, 237, 255);">
+    <div id="login-form-container" >
+        <form action="probability" method="GET">
+            <div class="card" style="width: 400px">
+            <div class="card-content" style="background-color:rgb(241, 255, 254);">
+                <div class="media">
+                <div class="is-size-4 has-text-centered" style="font-family: FreeMono; font-weight: bold" >Income Classification</div>
+                </div>
+                <div class="content">
+
+                <div class="field">
+                    <p class="control" style="font-family: FreeMono">
+                    Age: <input class="input" type="number" name="age" id="age" >
+                    </p>
+                </div>
+
+
+                <label style="font-family: FreeMono" for="work">Workclass:</label>
+                <br>
+                <select name="work" id="work" style="width: 350px;" class="select-css">
+                    <option value="Private">Private</option>
+                    <option value="State-gov">State-gov</option>
+                    <option value="Federal-gov">Federal-gov</option>
+                    <option value="Self-emp-not-inc">Self-emp-not-inc</option>
+                    <option value="Self-emp-inc">Local-gov</option>
+                    <option value="Without-pay">Without-pay</option>
+                    <option value="Never-worked">Never-worked</option>
+                </select>  
+
+
+                <br>
+
+                <label style="font-family: FreeMono" for="education">Education:</label>
+                <select name="education" id="education" style="width: 350px;" class="select-css">
+                    <option value="Preschool">Preschool</option>
+                    <option value="1st-4th">1st-4th</option>
+                    <option value="5th-6th">5th-6th</option>
+                    <option value="7th-8th">7th-8th</option>
+                    <option value="9th">9th</option>
+                    <option value="10th">10th</option>
+                    <option value="11th">11th</option>
+                    <option value="12th">12th</option>
+                    <option value="HS-grad">HS-grad</option>
+                    <option value="Bachelors">Bachelors</option>
+                    <option value="Masters">Masters</option>
+                    <option value="Doctorate">Doctorate</option>
+                    <option value="Some-college">Some-college</option>
+                    <option value="Prof-school">Prof-school</option>
+                    <option value="Assoc-acdm">Assoc-acdm</option>
+                    <option value="Assoc-voc">Assoc-voc</option>
+                </select>      
+                
+                <br>
+
+                <label style="font-family: FreeMono" for="status">Marital status:</label>
+                <select name="status" id="status" style="width: 350px;" class="select-css">
+                    <option value="Never-married">Never-married</option>
+                    <option value="Married-civ-spouse">Married-civ-spouse</option>
+                    <option value="Married-spouse-absent">Married-spouse-absent</option>
+                    <option value="Married-AF-spouse">Married-AF-spouse</option>
+                    <option value="Separated">Separated</option>
+                    <option value="Widowed">Widowed</option>
+                    <option value="Divorced">Divorced</option>
+                </select>      
+                
+                <br>
+
+                <label style="font-family: FreeMono" for="race">Race:</label>
+                <select name="race" id="race" style="width: 350px;" class="select-css">
+                    <option value="White">White</option>
+                    <option value="Black">Black</option>
+                    <option value="Asian-Pac-Islander">Asian-Pac-Islander</option>
+                    <option value="Other">Other</option>
+                    <option value="Amer-Indian-Eskimo">Amer-Indian-Eskimo</option>            
+                </select>  
+                
+                <br>
+
+                <label style="font-family: FreeMono" for="sex">Sex:</label>
+                <select name="sex" id="sex" style="width: 350px;" class="select-css">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>   
+
+                <br>
+
+                <div class="field">
+                    <p style="font-family: FreeMono" class="control">
+                    Working hours per week: <input class="input" type="number" name="hours" id="hours">
+                    </p>
+                </div>
+                
+                <div class="field">
+                    <button class="button is-fullwidth is-rounded is-info is-outlined">Submit</button>
+                </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Income Classification</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css">
+        <style>
+            html{
+                overflow: hidden;
+            }
+
+            body{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            #login-form-container{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+    </head>	
+    <body style="background-color:rgb(205, 237, 255);">
+        <div id="login-form-container">
+            <div class="card" style="width: 400px">
+                <div class="card-content" style="background-color:rgb(241, 255, 254);">
+                    <div class="media" style="font-family: FreeMono">
+                        <div class="is-size-4 has-text-centered"> Probability of earning more than 50k</div>
+                    </div>
+
+                    <style type="text/css">
+                        #hideoverflow { overflow: hidden; }
+                        #outer { position: relative; left: 50%; float: left; }
+                        #inner { position: relative; left: -50%; float: left; }
+                        </style>
+
+                    <div id="hideoverflow">
+                        <div id="outer">
+                            <div id="inner">
+                    <div class="media" style="font-family: FreeMono">
+                        <div class="is-size-1 has-text-centered"> <b>{{ prediction }}</b></div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <form action="/">
+                        <div class="field">
+                            <button class="button is-fullwidth is-rounded is-info is-outlined">Retry</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
