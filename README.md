@@ -10,7 +10,7 @@ Build an application for your model using REST APIs with Flask
 # Introduction
 
 
-In 1971, with just 21 years old, Steve Wozniak was already an incredible computer programmer and elecronics engineer. He really enjoyed to spend his time creating weird devices and searching for improvements in his area. It was in 1971 when he met a 15 year old guy who would soon realize the enormous potential of what Wozniak was doing. This guy thought that the weird devices Wozniak created could become useful for many people. They worked together the following years, and after 5 years, they started commercializing his first product: the Apple I.
+In 1971, with just 21 years old, Steve Wozniak was already an incredible computer programmer and elecronics engineer. He really enjoyed to spend his time creating weird devices and searching for improvements in his area. It was in 1971 when he met a 15 year old guy who would soon realize the enormous potential of what Wozniak was doing. This guy thought that the weird devices Wozniak created could become useful for many people. They worked together the following years, and 6 years later, they started to commercialize one of the first and most successful personal computers of the era: the Apple II.
 
 The guy that convinced Wozniak to convert his devices into products was Steve Jobs. It is curious, because everybody knows who Steve Jobs is, but not many people have heard about Wozniak.
 
@@ -20,20 +20,19 @@ This post is not about the story behind Apple, but it is about turning technolog
 
 
 
-When you spend a lot of time with notebooks and competitions, it seems that the Machine Learning picture is pretty simple: you create models that throw a metric. This metric explains how good your model is, so you have to improve the metric. Sometimes you have a threshold. Eventually you achieve this threshold. And that's it! job is done!
+When you spend a lot of time with notebooks and competitions, it seems that the Machine Learning picture is pretty simple: you create models that throw a metric. This metric explains how good your model is, so you have to improve the metric. Sometimes you have a threshold. Eventually you achieve this threshold. And once you achieve it, it means that the model is good enough so, job is done!
 
-It turns that in a real environment this is just the tip of the iceberg.
-We have to remember that at the end of the day, what we want to do is to create products that people can use. 
+It turns that in a real environment this process is just the tip of the iceberg. We have to remember that at the end of the day, what we want to do is to create products that are useful for the people.
 
 In this post I will develop a web application for a Machine Learning model. I will use Flask, a microframework where you can build a REST API in a simple way with Python code. 
 
 
 We will work with [Adult Census Income](https://www.kaggle.com/uciml/adult-census-income) Dataset. We will try to predict if a person earns more than 50k or not, thus we have a binary classification problem. As explanatory variables, we will use personal characteristics as age, sex, marital status and working hours per week. 
 
-We will use HTML for building the web application. I know many people reading this aren't familiar with it, so if you are one of them, don't worry! I am not an expert either so the code here is not a big deal. It is also worth noting that in this post I will focus more on developing a REST API, as I think that's what most of you want to learn.
+We will use HTML for building the web application. I know many people reading this are not familiar with it, so if you are one of them, don't worry! I am not an expert either so the code here is not a big deal. It is also worth mentioning that in this post I will focus on developing a REST API, so the web development will take a secondary place.
 
 
-this post is structured as follows: First we will define in an easy way the concepts we have to know for building a REST API. Then, I will explain the code step by step. You can find all the code used for this proyect in [this repository](https://github.com/Adricarpin/Flask-REST-API.git).
+this post is structured as follows: First we will define in an easy way the concepts we have to know before building a REST API. Then, I will explain the code step by step. You can find all the code used for this proyect in [this repository](https://github.com/Adricarpin/Flask-REST-API.git).
 
 
 That being said, let's get to the point!
@@ -50,7 +49,7 @@ API is the acronym for Application Programming Interface, which is basically sof
 
 - **What is REST?**
 
-REST can be defined as set of rules that developers follow when they create their API. REST (REpresentational State Transfer) is basically a stateless architecture that generally runs over HTTP.
+REST can be defined as set of rules that developers follow when they create their API. It  stands for REpresentational State Transfer, and is a stateless architecture that generally runs over HTTP.
 
 
 - **What is the difference between REST and RESTful?**
@@ -59,8 +58,7 @@ While REST refers to the arquitecture, RESTful refers to a web service that impl
 
 - **How a RESTful API works?**
 
-What RESTful API essentially does is use **requests** to obtain **resources**.
-
+What a RESTful API essentially does is send requests to obtain resources.
 
 - **What is exactly a request?**
 
@@ -69,11 +67,11 @@ For doing a request you use HTTP methods. The most important methods are the fol
 
 ```GET``` to fetch data.
 
-```PUT``` to alter the state of data (such as an object, file, or block).
+```PUT``` to alter the state of data.
 
 ```POST``` to create data.
 
-```DELETE``` to Remove data.
+```DELETE``` to remove data.
 
 As an example, when you go to http://www.google.com, you send the following:
 
@@ -94,8 +92,7 @@ This is a GET request where:
 A resource is essentially data. For example, if you ask for your model predictions, the predictions, than can be some sort of data like a JSON file, will be the resource.
 
 
-
-I think that with this key concepts in mind we are now ready to build a REST API with Flask, so let's go for it!
+I think that with this key concepts in mind we are now ready to build a REST API with Flask, so let's get down to business!
 
 
 # REST API implementation with Flask
@@ -200,7 +197,7 @@ logit = logit.fit(X_train, y_train)
  
 Once we have our model fitted, we have to create a function that does the following:
 
-It takes as **inputs** single values for each of the explanatory variables, i.e., characteristics of an individual (you tell it, for example, that the individual is 32 years old, is a female, works 40 hours a week...)
+It takes as inputs single values for each of the explanatory variables, i.e., characteristics of an individual.
 
 It **outputs** the probability the individual has to earn more than 50k given their characteristics (inputs).
 
@@ -222,8 +219,7 @@ def predict_probability(age, workclass, education, marital_status, race, sex, ho
     return prediction 
 ```
 
-As you might guess, our web application has the same inputs and the same output, thus this function is key for this project. 
-
+As you may have noticed, our web application has the same inputs and the same output, thus this function is key for this project.
 
 
 ## Building the REST API
@@ -278,7 +274,7 @@ class probability(Resource):
 ```
 
 
-Then we have to add the classes as resources. For doing that, we use the ```add_resource``` method, specifying the name of the class and the url where they will go.
+Then we have to add the classes as resources. For doing that, we use the ```add_resource``` method, specifying the name of the class and the URL where they will go.
 
 ```python
 api.add_resource(index, '/')
@@ -294,7 +290,7 @@ if(__name__=='__main__'):
 ```
 
 
-:ledger:NOTE: If you don't know what the ```if(__name__=='__main__')``` does, here is an explanation: Python assigns the name ```__main__``` to a script when it is executed. If the script is imported from another script, the script keeps its given name (not ```__main__```). Therefore, using the ```if(__name__=='__main__')``` statement we make sure that the app is only run when we are executing the ```server.py``` script (so if we are on an other script and we import something from the ```server.py``` script, the app doesn't run). This is a common practice for avoiding undesired executions of code.
+:ledger:NOTE: If you don't know what the ```if(__name__=='__main__')``` does, here is an explanation: Python assigns the name ```__main__``` to a script when it is executed. If the script is imported from another script, the script keeps its given name (not ```__main__```). Therefore, using the ```if(__name__=='__main__')``` statement we make sure that the app is only run when we are executing the ```server.py``` script. Thus,  if we are on an other script and we import something from the server.py script, the app doesn't run. This is a common practice for avoiding undesired executions of code.
 
 
 
@@ -311,21 +307,22 @@ In is file you can see the requirements for running the code. It is not mandator
 
 - ```templates``` folder
 
-Here I have the HTML code for building the web application. ```index.html``` has the code for building the main page (where we set the inputs) and ```output.html``` has the code for building the output page (where we see the probability). 
+Here I store the HTML code for building the web application. ```index.html``` has the code for building the main page (where we set the inputs) and ```output.html``` has the code for building the output page (where we see the probability). 
 
 :ledger:NOTE: I have a limited knowledge of HTML, so I am sure that the code can be improved in many ways. 
 
 - ```static``` folder
 
-Here I store CSS code. If you haven't heard of CSS, it is used to define styles for your web pages, so it helps the HTML code to make the web application look nicer. 
+Here I store CSS code. 
 
+:ledger:NOTE: If you haven't heard of CSS, it is used to define styles for your web application, so it helps the HTML code to make the web application look nicer.
 
 
 # Test the application
 
 Once we know all the above, we can run our application. For doing that, open a terminal in the path of the root folder where you have the ```server.py``` script. Write ```python service.py``` to run ```service.py```. 
 
-Once you run it you should see a line like this in the output
+Once you run it you should see a line like this in the output:
 
 ```sh
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
@@ -333,7 +330,7 @@ Once you run it you should see a line like this in the output
 
 ```http://127.0.0.1:5000/``` is the direction of your application. 
 
-127.0.0.1 is the IP of the localhost and 5000 is the port. Port 5000 is the default but you can specify any other using the ```app.run()``` function in ```server.py```.
+127.0.0.1 is the IP of the localhost and 5000 is the port. Port 5000 is the default but you can specify any other using the ```app.run()``` method in ```server.py```.
 
 If you click on the URL, you should see the web application in your browser.
 Now you can play with it and check that everything works! 
