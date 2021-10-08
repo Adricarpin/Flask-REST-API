@@ -1,16 +1,10 @@
 # Turning Machine Learning Models into products with Flask
 
-Build an application for your model using REST APIs with Flask
-
-
-*Read the original post [here]*
-
-
+*read the original post [here](https://medium.com/@adro99/turning-machine-learning-models-into-products-with-flask-f8c2ccc210b3)*.
 
 # Introduction
 
-
-In 1971, with just 21 years old, Steve Wozniak was already an incredible computer programmer and elecronics engineer. He really enjoyed to spend his time creating weird devices and searching for improvements in his area. It was in 1971 when he met a 15 year old guy who would soon realize the enormous potential of what Wozniak was doing. This guy thought that the weird devices Wozniak created could become useful for many people. They worked together the following years, and 6 years later, they started to commercialize one of the first and most successful personal computers of the era: the Apple II.
+In 1971, with just 21 years old, Steve Wozniak was already an incredible computer programmer and electronics engineer. He really enjoyed to spend his time creating weird devices and searching for improvements in his area. It was in 1971 when he met a 15 year old guy who would soon realize the enormous potential of what Wozniak was doing. This guy thought that the weird devices Wozniak created could become useful for many people. They worked together the following years, and 6 years later, they started to commercialize one of the first and most successful personal computers of its time:  the Apple II.
 
 The guy that convinced Wozniak to convert his devices into products was Steve Jobs. It is curious, because everybody knows who Steve Jobs is, but not many people have heard about Wozniak.
 
@@ -27,9 +21,9 @@ It turns that in a real environment this process is just the tip of the iceberg.
 In this post I will develop a web application for a Machine Learning model. I will use Flask, a microframework where you can build a REST API in a simple way with Python code. 
 
 
-We will work with [Adult Census Income](https://www.kaggle.com/uciml/adult-census-income) Dataset. We will try to predict if a person earns more than 50k or not, thus we have a binary classification problem. As explanatory variables, we will use personal characteristics as age, sex, marital status and working hours per week. 
+We will work with [Adult Census Income](https://www.kaggle.com/uciml/adult-census-income) Dataset. We will try to predict if a person earns more than 50k a year or not, thus we have a binary classification problem. As explanatory variables, we will use personal characteristics as age, sex, marital status and working hours per week. 
 
-We will use HTML for building the web application. I know many people reading this are not familiar with it, so if you are one of them, don't worry! I am not an expert either so the code here is not a big deal. It is also worth mentioning that in this post I will focus on developing a REST API, so the web development will take a secondary place.
+We will use HTML for building the web application. I know many people reading this are not familiar with it, so if you are one of them, don't worry! I am not an expert either so the code here is not a big deal. It is also worth mentioning that in this post I will focus on developing a REST API, so web development will take a secondary place.
 
 
 this post is structured as follows: First we will define in an easy way the concepts we have to know before building a REST API. Then, I will explain the code step by step. You can find all the code used for this proyect in [this repository](https://github.com/Adricarpin/Flask-REST-API.git).
@@ -49,14 +43,14 @@ API is the acronym for Application Programming Interface, which is basically sof
 
 - **What is REST?**
 
-REST can be defined as set of rules that developers follow when they create their API. It  stands for REpresentational State Transfer, and is a stateless architecture that generally runs over HTTP.
+REST can be defined as a set of rules that developers follow when they create their API. It  stands for REpresentational State Transfer, and is a stateless architecture that generally runs over HTTP.
 
 
 - **What is the difference between REST and RESTful?**
 
 While REST refers to the arquitecture, RESTful refers to a web service that implements the REST architecture.
 
-- **How a RESTful API works?**
+- **How does a RESTful API work?**
 
 What a RESTful API essentially does is send requests to obtain resources.
 
@@ -89,7 +83,7 @@ This is a GET request where:
 
 - **What is exactly a resource?**
 
-A resource is essentially data. For example, if you ask for your model predictions, the predictions, than can be some sort of data like a JSON file, will be the resource.
+A resource is essentially data. For example, if you ask for your model predictions, the predictions, that can be some sort of data like a JSON file, will be the resource.
 
 
 I think that with this key concepts in mind we are now ready to build a REST API with Flask, so let's get down to business!
@@ -100,14 +94,14 @@ I think that with this key concepts in mind we are now ready to build a REST API
 
 Before going with the code, I think is essential to first set the plan:
 
-Essentially, we want to create an application that takes as **inputs** the different characteristics of and individual, and **outputs** the probability that the individual has to earn more than 50k given those characteristics.
+Essentially, we want to create an application that takes as **inputs** the different characteristics of and individual, and **outputs** the probability that the individual has to earn more than 50k a year given those characteristics.
 
 Therefore, in the main page we will need to specify the inputs:
 
 ![index_full](https://user-images.githubusercontent.com/86348959/136525948-db643913-a4f4-4d32-97ae-da989aa03b88.png)
 
 
-and once we submit them, the application will send us to a page where we can see the outputs:
+and once we submit them, the application will send us to a page where we can see the output:
 
 
 ![output_full](https://user-images.githubusercontent.com/86348959/136525967-928012a3-6e96-4ab7-8f05-03b4e1b58610.png)
