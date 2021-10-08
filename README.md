@@ -1,6 +1,6 @@
 # Turning Machine Learning Models into products with Flask
 
-*read the original post [here](https://medium.com/@adro99/turning-machine-learning-models-into-products-with-flask-f8c2ccc210b3)*.
+*Read the original post [here](https://medium.com/@adro99/turning-machine-learning-models-into-products-with-flask-f8c2ccc210b3)*.
 
 # Introduction
 
