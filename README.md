@@ -39,16 +39,16 @@ To make things clear, I think first we have to answer some typical questions abo
 
 - **What is an API?**
 
-API is the acronym for Application Programming Interface, which is basically software intermediary that allows two applications to talk to each other.
+You can think of an API (Application Programming Interface) as software that connects programs, allowing them to communicate (send data).
 
 - **What is REST?**
 
-REST can be defined as a set of rules that developers follow when they create their API. It  stands for REpresentational State Transfer, and is a stateless architecture that generally runs over HTTP.
+REST can be defined as a set of specific rules that you follow when creating an API. It stands for REpresentational State Transfer, and is a stateless architecture that generally runs over HTTP.
 
 
 - **What is the difference between REST and RESTful?**
 
-While REST refers to the arquitecture, RESTful refers to a web service that implements the REST architecture.
+While REST refers to the architecture, RESTful refers to a web service that implements the REST architecture.
 
 - **How does a RESTful API work?**
 
@@ -297,7 +297,7 @@ This is the raw data. You can also access it in [Kaggle](https://www.kaggle.com/
 
 - ```requirements.txt```
 
-In is file you can see the requirements for running the code. It is not mandatory to have the exactly same versions.
+In is file you can see the packages I use in my environment for running the code. It is not mandatory to have the exactly same versions.
 
 - ```templates``` folder
 
@@ -332,6 +332,8 @@ Now you can play with it and check that everything works!
 
 Finally, we have converted our Machine Learning model into a product that can be developed!
 
+# Conclusion
+In this post, we have turned a Machine Learning model into a final product, so everyone can interact with it and extract value. As future work I suggest improving the application adding new functions like an option to store data in a Database (with SQLAlchemy), or a login system for users (with Flask-JWT).
 
 I hope you have learned a lot! Thanks for reading!
 
