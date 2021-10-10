@@ -338,7 +338,9 @@ In this post, we have turned a Machine Learning model into a final product, so e
 I hope you have learned a lot! Thanks for reading!
 
 
+# References
 
+[Rest APIs with Flask and Python](https://www.udemy.com/course/rest-api-flask-and-python/), Jose Salvatierra
 
 
 
